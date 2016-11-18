@@ -19,7 +19,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
     {
         res = new HttpResponseMessage(HttpStatusCode.OK)
         {
-            Content = new StringContent("Hello " + name)
+            Content = new StringContent("Hello2 " + name)
         };
     }
     else

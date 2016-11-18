@@ -1,0 +1,10 @@
+{
+  "id": "6a709861cab55e68bfed5d2c2fe7fc0d",
+  "functions": [ "ManageSpeaker" ],
+  "http": {
+    "routePrefix": "api"
+  },
+  "tracing": {
+    "fileLoggingMode": "always"
+  }
+}

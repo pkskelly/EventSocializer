@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.Azure.WebJobs.Host;
 
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsyncCollector<string> speakers, TraceWriter log)
 {
     var queryParams = req.GetQueryNameValuePairs()
         .ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
@@ -17,6 +17,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
     string name;
     if (queryParams.TryGetValue("name", out name))
     {
+        await speakers.AddAsync(name);
         res = new HttpResponseMessage(HttpStatusCode.OK)
         {
             Content = new StringContent("Hello2 " + name)

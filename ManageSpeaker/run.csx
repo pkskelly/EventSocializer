@@ -17,7 +17,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsyncCollec
     string name;
     if (queryParams.TryGetValue("name", out name))
     {
-        await speakers.AddAsync(name);
+        speakers.AddAsync(name);
         res = new HttpResponseMessage(HttpStatusCode.OK)
         {
             Content = new StringContent("Hello2 " + name)

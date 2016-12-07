@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsyncCollector<string> speakersOut, TraceWriter log)
 {
@@ -17,7 +18,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsync
     if (!string.IsNullOrEmpty(twitterHandle))
     {
         var speaker = new Speaker(){FirstName= data?.firstName, LastName=data?.lastName, TwitterHandle=data?.twitterHandle };
-        speakersOut.AddAsync(speaker);
+        speakersOut.AddAsync(JsonConvert.SerializeObject(speaker);
         res = new HttpResponseMessage(HttpStatusCode.OK)
         {
             Content = new StringContent(string.Empty)

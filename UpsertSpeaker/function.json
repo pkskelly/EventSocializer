@@ -1,0 +1,22 @@
+{
+    "bindings": [
+        {
+            "type": "httpTrigger",
+            "name": "req",
+            "direction": "in",
+            "methods": [ "get" ]
+        },
+        {
+            "type": "queue",
+            "name": "speakersOut",
+            "queueName": "speakers",
+            "connection": "eventsocializer_storage",
+            "direction": "out"
+        },
+        {
+            "type": "http",
+            "name": "$return",
+            "direction": "out"
+        }
+    ]
+}

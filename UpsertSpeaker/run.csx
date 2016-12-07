@@ -13,7 +13,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsync
 {
     log.Info(string.Format("C# HTTP trigger function processed a request. {0}", req.RequestUri));
 
-    dynamic data = await req.Content.ReadAsStringAsync<object>();
+    dynamic data = await req.Content.ReadAsAsync<object>();
 
     HttpResponseMessage res = null;
     string twitterHandle = data?.twitterHandle;

@@ -30,5 +30,5 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsync
         };
     }
 
-    return Task.FromResult(res);
+    return res;
 }

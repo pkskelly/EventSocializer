@@ -1,3 +1,4 @@
+#load "..\Shared\Speaker.csx"
 #r "Newtonsoft.Json"
 
 using System;
@@ -37,10 +38,3 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsync
     return res;
 }
 
-public class Speaker
-{
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string TwitterHandle { get; set; }
-
-}

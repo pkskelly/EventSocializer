@@ -1,5 +1,6 @@
 {
   "id": "6a709861cab55e68bfed5d2c2fe7fc0d",
+  "watchDirectories": ["Shared"],
   "functions": [ "UpsertSpeaker" ],
   "http": {
     "routePrefix": "api"

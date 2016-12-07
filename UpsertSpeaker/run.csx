@@ -10,13 +10,14 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsync
 {
     log.Info(string.Format("C# HTTP trigger function processed a request. {0}", req.RequestUri));
 
-    dynamic data = await req.Content.ReadAsAsync<object>();
+    dynamic data = await req.Content.ReadAsStringAsync<object>();
 
     HttpResponseMessage res = null;
     string twitterHandle = data?.twitterHandle;
     if (!string.IsNullOrEmpty(twitterHandle))
     {
-        speakersOut.AddAsync(data);
+        var speaker = new Speaker(){FirstName= data?.firstName, LastName=data?.lastName, TwitterHandle=data?.twitterHandle };
+        speakersOut.AddAsync(speaker);
         res = new HttpResponseMessage(HttpStatusCode.OK)
         {
             Content = new StringContent(string.Empty)
@@ -31,4 +32,12 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsync
     }
 
     return res;
+}
+
+public class Speaker
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string TwitterHandle { get; set; }
+
 }

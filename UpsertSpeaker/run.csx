@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.Azure.WebJobs.Host;
 
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsyncCollector<string> speakersOut, TraceWriter log)
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, IAsyncCollector<string> speakersOut, TraceWriter log)
 {
     log.Info(string.Format("C# HTTP trigger function processed a request. {0}", req.RequestUri));
 
